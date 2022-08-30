@@ -3,7 +3,7 @@
         "tls": {
             "certificates": {
                 "automate": [
-                    "example.com"
+                    "xxx.com"
                 ]
             },
             "automation": {
@@ -16,8 +16,8 @@
                                     "dns": {
                                         "provider": {
                                             "name": "alidns",
-                                            "access_key_id": "access_key_id",
-                                            "access_key_secret": "access_key_secret"
+                                            "access_key_id": "alidns id",
+                                            "access_key_secret": "alidns secret"
                                         }
                                     }
                                 }
@@ -33,59 +33,19 @@
                     "listen": [
                         ":443"
                     ],
-                    "automatic_https": {
-                        "disable": false
-                    },
                     "routes": [
                         {
+                            "match": [
+                                {
+                                    "host": [
+                                        "xxx.com"
+                                    ]
+                                }
+                            ],
                             "handle": [
                                 {
                                     "handler": "file_server",
                                     "root": "/public"
-                                }
-                            ],
-                            "match": [
-                              {
-                                "not": [
-                                  {
-                                    "path": [
-                                        "/webhook"
-                                    ]
-                                  }
-                                ]
-                              }
-                            ]
-                        },
-                        {
-                            "handle": [
-                                {
-                                    "handler": "subroute",
-                                    "routes": [
-                                        {
-                                            "handle": [
-                                                {
-                                                    "branch": "master",
-                                                    "command": [
-                                                        "hugo",
-                                                        "--destination=/public"
-                                                    ],
-                                                    "handler": "webhook",
-                                                    "path": "/blog",
-                                                    "repo": "https://gitee.com/example/example-blog.git",
-                                                    "secret": "example",
-                                                    "submodule": true,
-                                                    "type": "gitee"
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ],
-                            "match": [
-                                {
-                                    "path": [
-                                        "/webhook"
-                                    ]
                                 }
                             ]
                         }

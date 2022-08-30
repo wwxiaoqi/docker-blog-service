@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  my-caddy-hugo:
+  caddy-hugo:
     image: ladderoperator/caddy2-hugo-aliyun
     restart: unless-stopped
     ports:
@@ -10,3 +10,4 @@ services:
     volumes:
       - $PWD/config.json:/etc/caddy/config.json
       - $PWD/data:/data
+      - $PWD/public:/public

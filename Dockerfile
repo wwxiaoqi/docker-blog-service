@@ -6,8 +6,7 @@ RUN go env -w GOPROXY=https://goproxy.cn,direct
 
 # 编译 Caddy 所需插件
 RUN xcaddy build \
-    --with github.com/caddy-dns/alidns \
-    --with github.com/WingLim/caddy-webhook
+    --with github.com/caddy-dns/alidns
 
 # deploy 镜像
 FROM caddy:2 AS deploy
